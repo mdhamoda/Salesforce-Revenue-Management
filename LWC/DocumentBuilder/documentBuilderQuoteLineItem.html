@@ -1,0 +1,67 @@
+<!--
+  @description       : Quote Line Items table for Document Builder (A4 optimized, rearranged columns, includes Net Total)
+-->
+<template>
+    <div class="quote-lines-container" style="width:100%; overflow-x:auto;">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered" style="width:100%; border-collapse: collapse; table-layout: auto;">
+            <thead>
+                <tr>
+                    <th style="width:15%;">Image</th>
+                    <th style="width:10%;">Product</th>
+                    <template if:true={showProductDescription}>
+                        <th style="width:25%;">Product Description</th>
+                    </template>
+                    <template if:true={showBundle}>
+                        <th style="width:10%;">Bundle</th>
+                    </template>
+                    <template if:true={showListPrice}>
+                        <th style="width:10%; text-align:right;">List Price</th>
+                    </template>
+                    <template if:true={showDiscountPercent}>
+                        <th style="width:5%; text-align:right;">Discount (%)</th>
+                    </template>
+                    <template if:true={showDiscountAmount}>
+                        <th style="width:5%; text-align:right;">Discount</th>
+                    </template>
+                    <template if:true={showNetTotalPrice}>
+                        <th class="image" style="width:8%; text-align:right;">Net Total</th>
+                    </template>
+                    <template if:true={showSortOrder}>
+                    <th style="width:5%; text-align:right;">Sort Order</th>
+                    </template>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={quoteLines} for:item="item">
+                    <tr key={item.Id}>
+                        <td style="text-align:center;">
+                            <img src={item.productImage} alt="Product Image" style="width:100px; height:100px; object-fit:contain;" />
+                        </td>
+                        <td style="white-space: normal; word-wrap: break-word;">{item.productName}</td>
+                        <template if:true={showProductDescription}>
+                            <td style="white-space: pre-line; word-wrap: break-word;">{item.productDescription}</td>
+                        </template>
+                        <template if:true={showBundle}>
+                            <td style="white-space: normal; word-wrap: break-word;">{item.parentProductName}</td>
+                        </template>
+                        <template if:true={showListPrice}>
+                            <td style="text-align:right;">{item.listPrice}</td>
+                        </template>
+                        <template if:true={showDiscountPercent}>
+                            <td style="text-align:right;">{item.discountPercent}</td>
+                        </template>
+                        <template if:true={showDiscountAmount}>
+                            <td style="text-align:right;">{item.discountAmount}</td>
+                        </template>
+                        <template if:true={showNetTotalPrice}>
+                            <td style="text-align:right;">{item.netTotalPrice}</td>
+                        </template>
+                        <template if:true={showSortOrder}>
+                            <td style="text-align:right;">{item.SortOrder}</td>
+                        </template>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</template>
