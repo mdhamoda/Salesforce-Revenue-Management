@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Manigandan Dhamodaran
+ * @group             : 
+ * @last modified on  : 12-22-2025
+ * @last modified by  : Manigandan Dhamodaran
+**/
 public class apexPostHookPricing implements RevSignaling.SignalingApexProcessor {
 
     public RevSignaling.TransactionResponse execute(RevSignaling.TransactionRequest request) {
